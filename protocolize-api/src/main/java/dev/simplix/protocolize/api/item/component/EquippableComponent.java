@@ -44,13 +44,21 @@ public interface EquippableComponent extends DataComponent {
 
     void setEquipOnInteract(boolean equipOnInteract);
 
-    static EquippableComponent create(EquipmentSlot equipmentSlot, SoundEvent equipSound, String model, String cameraOverlay, HolderSet<EntityType> allowedEntities, boolean dispensable, boolean swappable, boolean damageOnHurt, boolean equipOnInteract) {
-        return Protocolize.getService(EquippableComponent.Factory.class).create(equipmentSlot, equipSound, model, cameraOverlay, allowedEntities, dispensable, swappable, damageOnHurt, equipOnInteract);
+    boolean isCanBeSheared();
+
+    void setCanBeSheared(boolean canBeSheared);
+
+    SoundEvent getShearingSound();
+
+    void setShearingSound(SoundEvent shearingSound);
+
+    static EquippableComponent create(EquipmentSlot equipmentSlot, SoundEvent equipSound, String model, String cameraOverlay, HolderSet<EntityType> allowedEntities, boolean dispensable, boolean swappable, boolean damageOnHurt, boolean equipOnInteract, boolean  canBeSheared, SoundEvent shearingSound) {
+        return Protocolize.getService(EquippableComponent.Factory.class).create(equipmentSlot, equipSound, model, cameraOverlay, allowedEntities, dispensable, swappable, damageOnHurt, equipOnInteract, canBeSheared, shearingSound);
     }
 
     interface Factory {
 
-        EquippableComponent create(EquipmentSlot equipmentSlot, SoundEvent equipSound, String model, String cameraOverlay, HolderSet<EntityType> allowedEntities, boolean dispensable, boolean swappable, boolean damageOnHurt, boolean equipOnInteract);
+        EquippableComponent create(EquipmentSlot equipmentSlot, SoundEvent equipSound, String model, String cameraOverlay, HolderSet<EntityType> allowedEntities, boolean dispensable, boolean swappable, boolean damageOnHurt, boolean equipOnInteract, boolean  canBeSheared, SoundEvent shearingSound);
 
     }
 }
