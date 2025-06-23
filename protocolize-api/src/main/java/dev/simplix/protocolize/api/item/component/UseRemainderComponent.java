@@ -3,7 +3,7 @@ package dev.simplix.protocolize.api.item.component;
 import dev.simplix.protocolize.api.Protocolize;
 import dev.simplix.protocolize.api.item.BaseItemStack;
 
-public interface UseRemainderComponent extends StructuredComponent {
+public interface UseRemainderComponent extends DataComponent {
 
     BaseItemStack getConvertInto();
 

@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface DamageComponent extends StructuredComponent {
+public interface DamageComponent extends DataComponent {
 
     int getDamage();
 

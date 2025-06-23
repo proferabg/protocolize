@@ -2,11 +2,11 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 import dev.simplix.protocolize.api.item.BaseItemStack;
-import dev.simplix.protocolize.api.item.MobEffectInstance;
+import dev.simplix.protocolize.api.item.objects.MobEffectInstance;
 
 import java.util.Map;
 
-public interface FoodComponent extends StructuredComponent {
+public interface FoodComponent extends DataComponent {
 
     int getNutrition();
 

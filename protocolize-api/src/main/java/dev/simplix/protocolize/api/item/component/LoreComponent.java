@@ -5,7 +5,7 @@ import dev.simplix.protocolize.api.chat.ChatElement;
 
 import java.util.List;
 
-public interface LoreComponent extends StructuredComponent {
+public interface LoreComponent extends DataComponent {
 
     List<ChatElement<?>> getLore();
 

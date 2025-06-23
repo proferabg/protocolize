@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface DyedColorComponent extends StructuredComponent {
+public interface DyedColorComponent extends DataComponent {
 
     int getColor();
 

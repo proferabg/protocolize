@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface EnchantmentGlintComponent extends StructuredComponent {
+public interface EnchantmentGlintComponent extends DataComponent {
 
     boolean isShowGlint();
 

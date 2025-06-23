@@ -5,7 +5,7 @@ import dev.simplix.protocolize.data.MobEffect;
 
 import java.util.Map;
 
-public interface SuspiciousStewEffectsComponent extends StructuredComponent {
+public interface SuspiciousStewEffectsComponent extends DataComponent {
 
     Map<MobEffect, Integer> getEffects();
 

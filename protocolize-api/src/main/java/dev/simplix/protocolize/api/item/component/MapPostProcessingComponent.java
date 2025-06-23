@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface MapPostProcessingComponent extends StructuredComponent {
+public interface MapPostProcessingComponent extends DataComponent {
 
     PostProcessingType getPostProcessingType();
 

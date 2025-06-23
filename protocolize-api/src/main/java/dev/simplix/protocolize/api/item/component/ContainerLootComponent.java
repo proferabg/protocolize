@@ -1,21 +1,29 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import net.querz.nbt.tag.CompoundTag;
 
-public interface ContainerLootComponent extends StructuredComponent {
+public interface ContainerLootComponent extends DataComponent {
 
-    CompoundTag getData();
+    String getLootTable();
 
-    void setData(CompoundTag data);
+    void setLootTable(String lootTable);
 
-    static ContainerLootComponent create(CompoundTag data) {
-        return Protocolize.getService(Factory.class).create(data);
+    Long getSeed();
+
+    void setSeed(Long seed);
+
+    static ContainerLootComponent create(String lootTable) {
+        return Protocolize.getService(Factory.class).create(lootTable);
+    }
+
+    static ContainerLootComponent create(String lootTable, Long seed) {
+        return Protocolize.getService(Factory.class).create(lootTable, seed);
     }
 
     interface Factory {
 
-        ContainerLootComponent create(CompoundTag data);
+        ContainerLootComponent create(String lootTable);
+        ContainerLootComponent create(String lootTable, Long seed);
 
     }
 

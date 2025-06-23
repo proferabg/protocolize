@@ -1,8 +1,9 @@
 package dev.simplix.protocolize.api.item;
 
 import dev.simplix.protocolize.api.chat.ChatElement;
-import dev.simplix.protocolize.api.item.component.StructuredComponent;
-import dev.simplix.protocolize.api.item.component.StructuredComponentType;
+import dev.simplix.protocolize.api.item.component.DataComponent;
+import dev.simplix.protocolize.api.item.component.DataComponentType;
+import dev.simplix.protocolize.api.item.enums.ItemFlag;
 
 import java.util.Collection;
 import java.util.List;
@@ -44,15 +45,15 @@ public interface BaseItemStack {
 
     int hideFlags();
 
-    Collection<StructuredComponent> getComponents();
+    Collection<DataComponent> getComponents();
 
-    Collection<StructuredComponentType<?>> getComponentsToRemove();
+    Collection<DataComponentType<?>> getComponentsToRemove();
 
-    <T extends StructuredComponent> T getComponent(Class<? extends StructuredComponent> type);
+    <T extends DataComponent> T getComponent(Class<? extends DataComponent> type);
 
-    BaseItemStack addComponent(StructuredComponent component);
+    BaseItemStack addComponent(DataComponent component);
 
-    BaseItemStack removeComponent(StructuredComponentType<?> type);
+    BaseItemStack removeComponent(DataComponentType<?> type);
 
     BaseItemStack itemType(dev.simplix.protocolize.data.ItemType itemType);
 

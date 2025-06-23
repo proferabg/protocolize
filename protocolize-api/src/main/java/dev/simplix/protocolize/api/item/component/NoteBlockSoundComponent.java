@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface NoteBlockSoundComponent extends StructuredComponent {
+public interface NoteBlockSoundComponent extends DataComponent {
 
     String getSound();
 

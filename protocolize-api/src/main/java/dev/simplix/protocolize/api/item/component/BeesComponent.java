@@ -1,11 +1,11 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.item.Bee;
+import dev.simplix.protocolize.api.item.objects.Bee;
 
 import java.util.List;
 
-public interface BeesComponent extends StructuredComponent {
+public interface BeesComponent extends DataComponent {
 
     List<Bee> getBees();
 

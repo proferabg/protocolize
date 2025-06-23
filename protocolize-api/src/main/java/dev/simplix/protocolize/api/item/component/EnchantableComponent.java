@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface EnchantableComponent extends StructuredComponent {
+public interface EnchantableComponent extends DataComponent {
 
     int getValue();
 

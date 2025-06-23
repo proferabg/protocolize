@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface MapIdComponent extends StructuredComponent {
+public interface MapIdComponent extends DataComponent {
 
     int getId();
 

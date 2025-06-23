@@ -1,9 +1,9 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.item.DyeColor;
+import dev.simplix.protocolize.api.item.enums.DyeColor;
 
-public interface BaseColorComponent extends StructuredComponent {
+public interface BaseColorComponent extends DataComponent {
 
     DyeColor getColor();
 

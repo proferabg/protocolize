@@ -3,7 +3,7 @@ package dev.simplix.protocolize.api.item.component;
 import dev.simplix.protocolize.api.Protocolize;
 import net.querz.nbt.tag.CompoundTag;
 
-public interface CustomDataComponent extends StructuredComponent {
+public interface CustomDataComponent extends DataComponent {
 
     CompoundTag getCustomData();
 

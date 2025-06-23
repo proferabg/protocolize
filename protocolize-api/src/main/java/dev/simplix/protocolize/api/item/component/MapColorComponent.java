@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface MapColorComponent extends StructuredComponent {
+public interface MapColorComponent extends DataComponent {
 
     int getColor();
 

@@ -1,13 +1,13 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.item.ConsumeEffect;
-import dev.simplix.protocolize.api.item.ItemUseAnimation;
-import dev.simplix.protocolize.api.item.SoundEvent;
+import dev.simplix.protocolize.api.item.objects.ConsumeEffect;
+import dev.simplix.protocolize.api.item.enums.ItemUseAnimation;
+import dev.simplix.protocolize.api.item.objects.SoundEvent;
 
 import java.util.List;
 
-public interface ConsumableComponent extends StructuredComponent {
+public interface ConsumableComponent extends DataComponent {
 
     float getConsumeSeconds();
 

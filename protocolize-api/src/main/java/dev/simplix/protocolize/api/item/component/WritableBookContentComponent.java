@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-public interface WritableBookContentComponent extends StructuredComponent {
+public interface WritableBookContentComponent extends DataComponent {
 
     List<WriteablePage> getPages();
 

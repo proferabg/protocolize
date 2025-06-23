@@ -5,7 +5,7 @@ import dev.simplix.protocolize.data.ItemType;
 
 import java.util.List;
 
-public interface PotDecorationsComponent extends StructuredComponent {
+public interface PotDecorationsComponent extends DataComponent {
 
     List<ItemType> getDecorations();
 

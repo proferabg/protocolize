@@ -1,9 +1,9 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.item.Book;
+import dev.simplix.protocolize.api.item.objects.Book;
 
-public interface WrittenBookContentComponent extends StructuredComponent {
+public interface WrittenBookContentComponent extends DataComponent {
 
     Book getBook();
 

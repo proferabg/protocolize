@@ -5,7 +5,7 @@ import dev.simplix.protocolize.api.item.BaseItemStack;
 
 import java.util.List;
 
-public interface ContainerComponent extends StructuredComponent {
+public interface ContainerComponent extends DataComponent {
 
     List<BaseItemStack> getItems();
 

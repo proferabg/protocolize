@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface RarityComponent extends StructuredComponent {
+public interface RarityComponent extends DataComponent {
 
     Rarity getRarity();
 

@@ -3,7 +3,7 @@ package dev.simplix.protocolize.api.item.component;
 import dev.simplix.protocolize.api.BlockPosition;
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface LodestoneTrackerComponent extends StructuredComponent {
+public interface LodestoneTrackerComponent extends DataComponent {
 
     String getDimension();
 

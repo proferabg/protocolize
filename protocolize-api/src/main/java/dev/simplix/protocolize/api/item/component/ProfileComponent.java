@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public interface ProfileComponent extends StructuredComponent {
+public interface ProfileComponent extends DataComponent {
 
     @Nullable
     String getName();

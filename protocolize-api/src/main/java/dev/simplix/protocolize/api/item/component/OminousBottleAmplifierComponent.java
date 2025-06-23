@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface OminousBottleAmplifierComponent extends StructuredComponent {
+public interface OminousBottleAmplifierComponent extends DataComponent {
 
     int getAmplifier();
 

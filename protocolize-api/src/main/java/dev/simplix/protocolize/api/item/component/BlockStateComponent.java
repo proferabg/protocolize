@@ -4,7 +4,7 @@ import dev.simplix.protocolize.api.Protocolize;
 
 import java.util.Map;
 
-public interface BlockStateComponent extends StructuredComponent {
+public interface BlockStateComponent extends DataComponent {
 
     Map<String, String> getProperties();
 

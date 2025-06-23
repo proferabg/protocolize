@@ -1,21 +1,35 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import net.querz.nbt.tag.Tag;
+import net.querz.nbt.tag.CompoundTag;
 
-public interface LockComponent extends StructuredComponent {
+public interface LockComponent extends DataComponent {
 
-    Tag<?> getLock();
+    @Deprecated
+    String getKey();
 
-    void setLock(Tag<?> lock);
+    @Deprecated
+    void setKey(String key);
 
-    static LockComponent create(Tag<?> lock) {
-        return Protocolize.getService(Factory.class).create(lock);
+    CompoundTag getData();
+
+    void setData(CompoundTag data);
+
+    @Deprecated
+    static LockComponent create(String key) {
+        return Protocolize.getService(Factory.class).create(key);
+    }
+
+    static LockComponent create(CompoundTag data) {
+        return Protocolize.getService(Factory.class).create(data);
     }
 
     interface Factory {
 
-        LockComponent create(Tag<?> lock);
+        @Deprecated
+        LockComponent create(String lock);
+
+        LockComponent create(CompoundTag data);
 
     }
 

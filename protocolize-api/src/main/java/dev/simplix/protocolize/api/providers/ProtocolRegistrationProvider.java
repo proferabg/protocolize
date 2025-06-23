@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.providers;
 
 import dev.simplix.protocolize.api.PacketDirection;
 import dev.simplix.protocolize.api.Protocol;
-import dev.simplix.protocolize.api.item.component.StructuredComponentType;
+import dev.simplix.protocolize.api.item.component.DataComponentType;
 import dev.simplix.protocolize.api.mapping.ProtocolIdMapping;
 import dev.simplix.protocolize.api.packet.AbstractPacket;
 
@@ -18,7 +18,9 @@ public interface ProtocolRegistrationProvider {
     void registerPacket(List<ProtocolIdMapping> mappings, Protocol protocol,
                         PacketDirection direction, Class<? extends AbstractPacket> packetClass);
 
-    void registerItemStructuredComponentType(StructuredComponentType<?> type);
+    void registerDataComponentType(DataComponentType<?> type);
+
+    //void registerDataComponentPredicateType(DataComponentPredicateType<?> type);
 
     int packetId(Object packet, Protocol protocol, PacketDirection direction, int protocolVersion);
 

@@ -251,4 +251,9 @@ public final class ProtocolUtil {
         buf.writeInt((int) uuid.getLeastSignificantBits());
     }
 
+    public static String removeNamespace(String identifier){
+        if(identifier.contains(":"))
+            identifier = identifier.split(":")[1];
+        return identifier;
+    }
 }

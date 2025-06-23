@@ -1,11 +1,11 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.item.ConsumeEffect;
+import dev.simplix.protocolize.api.item.objects.ConsumeEffect;
 
 import java.util.List;
 
-public interface DeathProtectionComponent extends StructuredComponent {
+public interface DeathProtectionComponent extends DataComponent {
 
     List<ConsumeEffect.ConsumeEffectInstance> getDeathEffects();
 

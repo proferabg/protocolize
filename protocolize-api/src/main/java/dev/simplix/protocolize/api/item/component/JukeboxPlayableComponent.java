@@ -1,11 +1,9 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.chat.ChatElement;
-import dev.simplix.protocolize.api.item.JukeboxSong;
-import dev.simplix.protocolize.api.item.SoundEvent;
+import dev.simplix.protocolize.api.item.objects.JukeboxSong;
 
-public interface JukeboxPlayableComponent extends StructuredComponent {
+public interface JukeboxPlayableComponent extends DataComponent {
 
     String getIdentifier();
 

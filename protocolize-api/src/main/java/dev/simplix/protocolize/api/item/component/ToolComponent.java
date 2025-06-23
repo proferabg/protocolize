@@ -1,11 +1,11 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.item.ToolRule;
+import dev.simplix.protocolize.api.item.objects.ToolRule;
 
 import java.util.List;
 
-public interface ToolComponent extends StructuredComponent {
+public interface ToolComponent extends DataComponent {
 
     List<ToolRule> getRules();
 
@@ -25,13 +25,17 @@ public interface ToolComponent extends StructuredComponent {
 
     void setDamagePerBlock(int damagePerBlock);
 
-    static ToolComponent create(List<ToolRule> rules, float miningSpeed, int damagePerBlock) {
-        return Protocolize.getService(Factory.class).create(rules, miningSpeed, damagePerBlock);
+    boolean isCanDestroyBlocksInCreative();
+
+    void setCanDestroyBlocksInCreative(boolean canDestroyBlocksInCreative);
+
+    static ToolComponent create(List<ToolRule> rules, float miningSpeed, int damagePerBlock, boolean canDestroyBlocksInCreative) {
+        return Protocolize.getService(Factory.class).create(rules, miningSpeed, damagePerBlock, canDestroyBlocksInCreative);
     }
 
     interface Factory {
 
-        ToolComponent create(List<ToolRule> rules, float miningSpeed, int damagePerBlock);
+        ToolComponent create(List<ToolRule> rules, float miningSpeed, int damagePerBlock, boolean canDestroyBlocksInCreative);
 
     }
 

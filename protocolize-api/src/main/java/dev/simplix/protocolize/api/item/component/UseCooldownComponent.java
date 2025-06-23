@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface UseCooldownComponent extends StructuredComponent {
+public interface UseCooldownComponent extends DataComponent {
 
     float getCooldown();
 

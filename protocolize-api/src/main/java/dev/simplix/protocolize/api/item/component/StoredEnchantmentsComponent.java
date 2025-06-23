@@ -1,16 +1,16 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.util.Either;
+import dev.simplix.protocolize.api.item.objects.EnchantmentHolder;
 import dev.simplix.protocolize.data.Enchantment;
 
 import java.util.Map;
 
-public interface StoredEnchantmentsComponent extends StructuredComponent {
+public interface StoredEnchantmentsComponent extends DataComponent {
 
-    Map<Either<Enchantment, Integer>, Integer> getEnchantments();
+    Map<EnchantmentHolder<Integer>, Integer> getEnchantments();
 
-    void setEnchantments(Map<Either<Enchantment, Integer>, Integer> enchantments);
+    void setEnchantments(Map<EnchantmentHolder<Integer>, Integer> enchantments);
 
     void removeEnchantment(Enchantment enchantment);
 
@@ -24,19 +24,19 @@ public interface StoredEnchantmentsComponent extends StructuredComponent {
 
     void removeAllEnchantments();
 
-    static StoredEnchantmentsComponent create(Map<Either<Enchantment, Integer>, Integer> enchantments) {
+    static StoredEnchantmentsComponent create(Map<EnchantmentHolder<Integer>, Integer> enchantments) {
         return Protocolize.getService(Factory.class).create(enchantments);
     }
 
-    static StoredEnchantmentsComponent create(Map<Either<Enchantment, Integer>, Integer> enchantments, boolean showInTooltip) {
+    static StoredEnchantmentsComponent create(Map<EnchantmentHolder<Integer>, Integer> enchantments, boolean showInTooltip) {
         return Protocolize.getService(Factory.class).create(enchantments, showInTooltip);
     }
 
     interface Factory {
 
-        StoredEnchantmentsComponent create(Map<Either<Enchantment, Integer>, Integer> enchantments);
+        StoredEnchantmentsComponent create(Map<EnchantmentHolder<Integer>, Integer> enchantments);
 
-        StoredEnchantmentsComponent create(Map<Either<Enchantment, Integer>, Integer> enchantments, boolean showInTooltip);
+        StoredEnchantmentsComponent create(Map<EnchantmentHolder<Integer>, Integer> enchantments, boolean showInTooltip);
 
     }
 

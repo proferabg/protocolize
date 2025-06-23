@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface UnbreakableComponent extends StructuredComponent {
+public interface UnbreakableComponent extends DataComponent {
 
     boolean isShowInTooltip();
 

@@ -1,38 +1,38 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.item.Attribute;
+import dev.simplix.protocolize.api.item.objects.ItemAttributeModifier;
 
 import java.util.List;
 
-public interface AttributeModifiersComponent extends StructuredComponent {
+public interface AttributeModifiersComponent extends DataComponent {
 
-    List<Attribute> getAttributes();
+    List<ItemAttributeModifier> getAttributeModifiers();
 
-    void setAttributes(List<Attribute> attributes);
+    void setAttributeModifiers(List<ItemAttributeModifier> attributeModifiers);
 
     boolean isShowInTooltip();
 
     void setShowInTooltip(boolean showInTooltip);
 
-    void addAttribute(Attribute attribute);
+    void addAttribute(ItemAttributeModifier attributeModifier);
 
-    void removeAttribute(Attribute attribute);
+    void removeAttribute(ItemAttributeModifier attributeModifier);
 
     void removeAllAttributes();
 
-    static AttributeModifiersComponent create(List<Attribute> attributes) {
-        return Protocolize.getService(Factory.class).create(attributes);
+    static AttributeModifiersComponent create(List<ItemAttributeModifier> attributeModifiers) {
+        return Protocolize.getService(Factory.class).create(attributeModifiers);
     }
 
-    static AttributeModifiersComponent create(List<Attribute> attributes, boolean showInTooltip) {
-        return Protocolize.getService(Factory.class).create(attributes, showInTooltip);
+    static AttributeModifiersComponent create(List<ItemAttributeModifier> attributeModifiers, boolean showInTooltip) {
+        return Protocolize.getService(Factory.class).create(attributeModifiers, showInTooltip);
     }
 
     interface Factory {
 
-        AttributeModifiersComponent create(List<Attribute> attributes);
-        AttributeModifiersComponent create(List<Attribute> attributes, boolean showInTooltip);
+        AttributeModifiersComponent create(List<ItemAttributeModifier> attributeModifiers);
+        AttributeModifiersComponent create(List<ItemAttributeModifier> attributeModifiers, boolean showInTooltip);
 
     }
 

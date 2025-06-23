@@ -2,10 +2,10 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 import dev.simplix.protocolize.api.chat.ChatElement;
-import dev.simplix.protocolize.api.item.SoundEvent;
+import dev.simplix.protocolize.api.item.objects.SoundEvent;
 import dev.simplix.protocolize.data.Instrument;
 
-public interface InstrumentComponent extends StructuredComponent {
+public interface InstrumentComponent extends DataComponent {
 
     Instrument getInstrument();
 

@@ -5,7 +5,7 @@ import dev.simplix.protocolize.api.item.BaseItemStack;
 
 import java.util.List;
 
-public interface ChargedProjectilesComponent extends StructuredComponent {
+public interface ChargedProjectilesComponent extends DataComponent {
 
     List<BaseItemStack> getItems();
 

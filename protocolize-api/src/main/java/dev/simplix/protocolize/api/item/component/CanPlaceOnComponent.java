@@ -1,11 +1,11 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.item.BlockPredicate;
+import dev.simplix.protocolize.api.item.objects.BlockPredicate;
 
 import java.util.List;
 
-public interface CanPlaceOnComponent extends StructuredComponent {
+public interface CanPlaceOnComponent extends DataComponent {
 
     List<BlockPredicate> getBlockPredicates();
 

@@ -3,7 +3,7 @@ package dev.simplix.protocolize.api.item.component;
 import dev.simplix.protocolize.api.Protocolize;
 import dev.simplix.protocolize.api.chat.ChatElement;
 
-public interface CustomNameComponent extends StructuredComponent {
+public interface CustomNameComponent extends DataComponent {
 
     ChatElement<?> getCustomName();
 

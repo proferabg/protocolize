@@ -1,12 +1,12 @@
 package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.item.MobEffectInstance;
+import dev.simplix.protocolize.api.item.objects.MobEffectInstance;
 import dev.simplix.protocolize.data.Potion;
 
 import java.util.List;
 
-public interface PotionContentsComponent extends StructuredComponent {
+public interface PotionContentsComponent extends DataComponent {
 
     Potion getPotion();
 

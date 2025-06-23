@@ -2,7 +2,7 @@ package dev.simplix.protocolize.api.item.component;
 
 import dev.simplix.protocolize.api.Protocolize;
 
-public interface DamageResistantComponent extends StructuredComponent {
+public interface DamageResistantComponent extends DataComponent {
 
     String getTypes();
 
