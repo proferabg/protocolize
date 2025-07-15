@@ -33,8 +33,9 @@ public final class DebugUtil {
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss");
     private static final DateFormat DATE_FORMAT_FILE = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
 
-    public static final boolean enabled = System.getProperties().contains("dev.simplix.protocolize.debug") || System.getProperties().contains("dev.simplix.protocolize.debug.unzipped");
-    public static final boolean unzipped = System.getProperties().contains("dev.simplix.protocolize.debug.unzipped");
+    public static final boolean unzipped = isPropertyEnabled("dev.simplix.protocolize.debug.unzipped");
+    public static final boolean enabled = isPropertyEnabled("dev.simplix.protocolize.debug") || unzipped;
+    public static final boolean logComponents = isPropertyEnabled("dev.simplix.protocolize.debug.components");
 
     public static void writeDump(ByteBuf buf, String fileName, Throwable throwable) {
         buf.resetReaderIndex();
@@ -106,5 +107,9 @@ public final class DebugUtil {
         builder.append("Packets: \n");
         builder.append(Protocolize.protocolRegistration().debugInformation()).append("\n\n");
         return builder.toString();
+    }
+
+    private static boolean isPropertyEnabled(String property) {
+        return System.getProperties().containsKey(property) && Boolean.parseBoolean(System.getProperty(property));
     }
 }

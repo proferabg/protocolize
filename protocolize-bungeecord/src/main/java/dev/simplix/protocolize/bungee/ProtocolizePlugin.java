@@ -3,6 +3,7 @@ package dev.simplix.protocolize.bungee;
 import dev.simplix.protocolize.api.PlatformInitializer;
 import dev.simplix.protocolize.api.Protocolize;
 import dev.simplix.protocolize.api.providers.*;
+import dev.simplix.protocolize.api.util.DebugUtil;
 import dev.simplix.protocolize.api.util.ProtocolVersions;
 import dev.simplix.protocolize.bungee.commands.ProtocolizeCommand;
 import dev.simplix.protocolize.bungee.listener.PlayerListener;
@@ -78,6 +79,8 @@ public class ProtocolizePlugin extends Plugin {
         ProxyServer.getInstance().getLogger().info("======= PROTOCOLIZE =======");
         ProxyServer.getInstance().getLogger()
             .info("Version " + getDescription().getVersion() + " by " + getDescription().getAuthor());
+        if(DebugUtil.enabled || DebugUtil.logComponents)
+            ProxyServer.getInstance().getLogger().info("DEBUG -> Enabled:" + DebugUtil.enabled + " | Unzipped:" + DebugUtil.unzipped + " | Components:" + DebugUtil.logComponents);
         ProxyServer.getInstance().getLogger().info("Supported Platform: "
             + (supported ? "Yes (" + registrationProvider.strategy().getClass().getSimpleName() + ")" : "No"));
         if (!supported) {
