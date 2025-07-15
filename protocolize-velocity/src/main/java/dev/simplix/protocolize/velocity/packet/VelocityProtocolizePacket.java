@@ -25,7 +25,8 @@ import lombok.experimental.Accessors;
 public class VelocityProtocolizePacket implements MinecraftPacket {
 
     private AbstractPacket wrapper;
-    private byte[] skipBuffer;
+    private byte[] packetData;
+    private boolean skipBuffer = false;
 
     public VelocityProtocolizePacket() {
         Class<? extends AbstractPacket> wrapperClass = obtainProtocolizePacketClass();
@@ -46,24 +47,29 @@ public class VelocityProtocolizePacket implements MinecraftPacket {
 
     @Override
     public void decode(ByteBuf byteBuf, ProtocolUtils.Direction direction, ProtocolVersion protocolVersion) {
+        int bufferIndex = byteBuf.readerIndex();
+        packetData = new byte[byteBuf.readableBytes()];
+        byteBuf.readBytes(packetData);
+        byteBuf.readerIndex(bufferIndex);
         try {
             if (Protocolize.listenerProvider().listenersForType(obtainProtocolizePacketClass()).isEmpty()) {
-                skipBuffer = new byte[byteBuf.readableBytes()];
-                byteBuf.readBytes(skipBuffer); // Don't decode packet if nobody has interest in it
+                skipBuffer = true;
+                byteBuf.readerIndex(bufferIndex + packetData.length); // Don't decode packet if nobody has interest in it
                 return;
             }
             wrapper.read(byteBuf,
                 direction == ProtocolUtils.Direction.CLIENTBOUND ? PacketDirection.CLIENTBOUND : PacketDirection.SERVERBOUND,
                 protocolVersion.getProtocol());
             if (byteBuf.isReadable() && DebugUtil.enabled) {
-                DebugUtil.writeDump(byteBuf, new CorruptedFrameException("Protocolize is unable to read packet " + obtainProtocolizePacketClass().getName()
+                byteBuf.readerIndex(bufferIndex);
+                DebugUtil.writeDump(packetData, "packet", new CorruptedFrameException("Protocolize is unable to read packet " + obtainProtocolizePacketClass().getName()
                     + " at protocol version " + protocolVersion + " in direction " + direction.name()));
             }
         } catch (Throwable throwable) {
             CorruptedFrameException corruptedFrameException = new CorruptedFrameException("Protocolize is unable to read packet " + obtainProtocolizePacketClass().getName()
                 + " at protocol version " + protocolVersion + " in direction " + direction.name(), throwable);
             if (DebugUtil.enabled) {
-                DebugUtil.writeDump(byteBuf, corruptedFrameException);
+                DebugUtil.writeDump(packetData, "packet", corruptedFrameException);
             }
             throw corruptedFrameException;
         }
@@ -71,8 +77,8 @@ public class VelocityProtocolizePacket implements MinecraftPacket {
 
     @Override
     public void encode(ByteBuf byteBuf, ProtocolUtils.Direction direction, ProtocolVersion protocolVersion) {
-        if (skipBuffer != null) {
-            byteBuf.writeBytes(skipBuffer);
+        if (skipBuffer) {
+            byteBuf.writeBytes(packetData);
             return;
         }
         wrapper.write(byteBuf,

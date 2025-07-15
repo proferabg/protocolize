@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class AttributeModifier {
 
     private String id;
-    private MinMaxBounds<Double> amount;
+    private double amount;
     private Operation operation;
 
     /* These may change in the future */

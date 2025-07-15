@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
-import net.md_5.bungee.protocol.TagUtil;
+import net.md_5.bungee.protocol.util.TagUtil;
 import net.querz.nbt.tag.Tag;
 
 /**

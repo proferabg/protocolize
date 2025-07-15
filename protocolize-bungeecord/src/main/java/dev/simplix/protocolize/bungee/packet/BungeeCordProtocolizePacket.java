@@ -27,7 +27,8 @@ import java.util.Objects;
 public class BungeeCordProtocolizePacket extends DefinedPacket {
 
     private AbstractPacket wrapper;
-    private byte[] skipBuffer;
+    private byte[] packetData;
+    private boolean skipBuffer = false;
 
     public BungeeCordProtocolizePacket() {
         Class<? extends AbstractPacket> wrapperClass = obtainProtocolizePacketClass();
@@ -48,16 +49,20 @@ public class BungeeCordProtocolizePacket extends DefinedPacket {
 
     @Override
     public void read(ByteBuf buf, ProtocolConstants.Direction direction, int protocolVersion) {
+        int bufferIndex = buf.readerIndex();
+        packetData = new byte[buf.readableBytes()];
+        buf.readBytes(packetData);
+        buf.readerIndex(bufferIndex);
         try {
             if (Protocolize.listenerProvider().listenersForType(obtainProtocolizePacketClass()).isEmpty()) {
-                skipBuffer = new byte[buf.readableBytes()];
-                buf.readBytes(skipBuffer); // Don't decode packet if nobody has interest in it
+                skipBuffer = true;
+                buf.readerIndex(bufferIndex + packetData.length); // Don't decode packet if nobody has interest in it
                 return;
             }
             wrapper.read(buf, direction == ProtocolConstants.Direction.TO_CLIENT ? PacketDirection.CLIENTBOUND : PacketDirection.SERVERBOUND,
                 protocolVersion);
             if (buf.isReadable() && DebugUtil.enabled) {
-                DebugUtil.writeDump(buf, new CorruptedFrameException("Protocolize is unable to read packet " + obtainProtocolizePacketClass().getName()
+                DebugUtil.writeDump(packetData, "packet", new CorruptedFrameException("Protocolize is unable to read packet " + obtainProtocolizePacketClass().getName()
                     + " at protocol version " + protocolVersion + " in direction " + direction.name()));
             }
             if (Objects.equals(System.getProperty("protocolize.reset.readerindex"), "true")) {
@@ -67,7 +72,7 @@ public class BungeeCordProtocolizePacket extends DefinedPacket {
             BadPacketException badPacketException = new BadPacketException("Protocolize is unable to read packet " + obtainProtocolizePacketClass().getName()
                 + " at protocol version " + protocolVersion + " in direction " + direction.name(), throwable);
             if (DebugUtil.enabled) {
-                DebugUtil.writeDump(buf, badPacketException);
+                DebugUtil.writeDump(packetData, "packet", badPacketException);
             }
             throw badPacketException;
         }
@@ -75,8 +80,8 @@ public class BungeeCordProtocolizePacket extends DefinedPacket {
 
     @Override
     public void write(ByteBuf buf, ProtocolConstants.Direction direction, int protocolVersion) {
-        if (skipBuffer != null) {
-            buf.writeBytes(skipBuffer);
+        if (skipBuffer) {
+            buf.writeBytes(packetData);
             return;
         }
         wrapper.write(buf, direction == ProtocolConstants.Direction.TO_CLIENT ? PacketDirection.CLIENTBOUND : PacketDirection.SERVERBOUND,
